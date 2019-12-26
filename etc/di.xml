@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\SalesRule\Model\Rule\Action\Discount\CalculatorFactory">
+        <plugin name="calculator-plugin" type="ThanhVo\SalesRule\Plugin\Model\Rule\Action\Discount\CalculatorFactory" sortOrder="1" />
+    </type>
+    <type name="Magento\SalesRule\Model\Validator">
+        <plugin name="validator-plugin" type="ThanhVo\SalesRule\Plugin\Model\Validator" sortOrder="1" />
+    </type>
+</config>

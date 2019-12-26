@@ -1,0 +1,26 @@
+{
+  "name": "thanhvo-cse/magento2-sales-rule",
+  "description": "Enhance cart price rules",
+  "type": "magento2-module",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Thanh Vo",
+      "email": "thanhvo.cse@gmail.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "ThanhVo\\SalesRule\\": ""
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.magento.com/"
+    }
+  ]
+}
