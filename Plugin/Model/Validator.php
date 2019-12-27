@@ -20,7 +20,7 @@ class Validator
     {
         usort($items, function($a, $b) use ($subject)
         {
-            return strcmp($subject->getItemPrice($a), $subject->getItemPrice($b));
+            return $subject->getItemPrice($a) <=> $subject->getItemPrice($b);
         });
 
         return [$items, $address];
