@@ -92,6 +92,11 @@ class BuyXGetYCross extends AbstractDiscount
         return $discountData;
     }
 
+    /**
+     * @param \Magento\Quote\Model\Quote $quote
+     * @param \Magento\SalesRule\Model\Rule $rule
+     * @return float|int|mixed
+     */
     protected function getCrossQty(
         \Magento\Quote\Model\Quote $quote,
         \Magento\SalesRule\Model\Rule $rule
@@ -100,8 +105,12 @@ class BuyXGetYCross extends AbstractDiscount
         $crossQty = $quote->getCrossQty();
         if (empty($crossQty)) {
             $crossQty = 0;
-            foreach ($quote->getItems() as $item) {
+            foreach ($quote->getAllVisibleItems() as $item) {
                 $address = $item->getAddress();
+
+                if ($item->isDeleted()) {
+                    continue;
+                }
 
                 if (!$this->validatorUtility->canProcessRule($rule, $address)) {
                     continue;
