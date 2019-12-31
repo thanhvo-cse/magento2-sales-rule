@@ -80,14 +80,16 @@ class BuyXGetYCross extends AbstractDiscount
             $discountQty += $freeQty - $x;
         }
 
-        if ($discountQty > 0) {
-            $quote->setDiscountedQty($discountedQty + $discountQty);
-
-            $discountData->setAmount($discountQty * $itemPrice);
-            $discountData->setBaseAmount($discountQty * $baseItemPrice);
-            $discountData->setOriginalAmount($discountQty * $itemOriginalPrice);
-            $discountData->setBaseOriginalAmount($discountQty * $baseItemOriginalPrice);
+        if ($discountQty < 0) {
+            $discountQty = 0;
         }
+
+        $quote->setDiscountedQty($discountedQty + $discountQty);
+
+        $discountData->setAmount($discountQty * $itemPrice);
+        $discountData->setBaseAmount($discountQty * $baseItemPrice);
+        $discountData->setOriginalAmount($discountQty * $itemOriginalPrice);
+        $discountData->setBaseOriginalAmount($discountQty * $baseItemOriginalPrice);
 
         return $discountData;
     }

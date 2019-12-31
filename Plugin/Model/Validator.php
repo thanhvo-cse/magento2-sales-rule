@@ -18,10 +18,15 @@ class Validator
         Address $address = null
     )
     {
+        // Sort to apply discount on cheapest items first
         usort($items, function($a, $b) use ($subject)
         {
             return $subject->getItemPrice($a) <=> $subject->getItemPrice($b);
         });
+
+        // Reset data for cross cart price rule
+        $address->getQuote()->setCrossQty(0);
+        $address->getQuote()->setDiscountedQty(0);
 
         return [$items, $address];
     }
